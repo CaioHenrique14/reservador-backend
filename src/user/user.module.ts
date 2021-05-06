@@ -13,7 +13,7 @@ import { User, UserSchema } from './user.model';
       }
     ])
   ],
-  exports: [],
+  exports: [UserService],
   controllers: [UserController],
   providers: [UserService]
 })

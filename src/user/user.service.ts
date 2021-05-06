@@ -30,4 +30,8 @@ export class UserService {
         const userDelete = this.userModel.findOneAndDelete({ _id: id }).exec();
         return (await userDelete).remove();
     }
+
+    async findByEmail(email: string): Promise<User | undefined> {
+        return this.userModel.findOne({email});
+      }
 }
