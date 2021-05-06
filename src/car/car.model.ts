@@ -5,7 +5,13 @@ import { Document } from 'mongoose';
 export class Car extends Document {
 
     @Prop()
+    idUnit: number;
+
+    @Prop()
     name: string;
+
+    @Prop()
+    plate: string;
   
     @Prop()
     year: number;
@@ -24,9 +30,6 @@ export class Car extends Document {
 
     @Prop()
     price: number;
-
-    @Prop()
-    isRent: boolean;
     
 }
 

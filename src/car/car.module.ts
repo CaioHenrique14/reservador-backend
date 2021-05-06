@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
-import { Car, CarSchema } from './car';
-import { CarsService } from './cars.service';
-import { CarsController } from './cars.controller';
+import { Car, CarSchema } from  './car.model';
+import { CarService } from './car.service';
+import { CarController } from './car.controller';
 
 @Module({
   imports: [
@@ -14,7 +14,7 @@ import { CarsController } from './cars.controller';
     ])
   ],
   exports: [],
-  controllers: [CarsController],
-  providers: [CarsService]
+  controllers: [CarController],
+  providers: [CarService]
 })
-export class CarsModule {}
+export class CarModule {}
