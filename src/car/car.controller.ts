@@ -1,4 +1,5 @@
-import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put, Query } from '@nestjs/common';
+import { FilterSelector } from 'src/filter/filter-selector.model';
 import { Car } from './car.model';
 import { CarService } from './car.service';
 
@@ -11,6 +12,11 @@ export class CarController {
   @Get()
   async getAll(): Promise<Car[]> {
     return this.carService.getAll();
+  }
+
+  @Get('filter')
+  async findByFilter(@Query() filter:FilterSelector): Promise<Car[]> {
+    return this.carService.findByFilter(filter);
   }
 
   @Post()
