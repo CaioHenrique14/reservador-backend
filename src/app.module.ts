@@ -9,7 +9,7 @@ import { AuthModule } from './auth/auth.module';
 import { UserModule } from './user/user.module';
 
 @Module({
-  imports: [MongooseModule.forRoot('mongodb://localhost:27017/reservador'), CarModule, LeaseModule,UnitModule, AuthModule, UserModule],
+  imports: [MongooseModule.forRoot('mongodb+srv://reservador:WKLqI1Q6vkz9fM5T@cluster0.0dnbu.mongodb.net/test?authSource=admin&replicaSet=atlas-rdvhpb-shard-0&readPreference=primary&appname=MongoDB%20Compass&ssl=true'), CarModule, LeaseModule,UnitModule, AuthModule, UserModule],
   controllers: [AppController],
   providers: [AppService],
 })
