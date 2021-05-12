@@ -3,9 +3,11 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { Lease, LeaseSchema } from  './lease.model';
 import { LeaseService } from './lease.service';
 import { LeaseController } from './lease.controller';
+import { CarModule } from 'src/car/car.module';
 
 @Module({
   imports: [
+    CarModule,
     MongooseModule.forFeature([
       {
         name: Lease.name,

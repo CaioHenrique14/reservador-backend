@@ -8,7 +8,7 @@ export class Lease extends Document {
   idCar: string;
 
   @Prop()
-  idUser: number;
+  idUser: string;
 
   @Prop()
   dateInitial: Date;
@@ -20,7 +20,7 @@ export class Lease extends Document {
   mileage: number;
 
   @Prop()
-  value: string;
+  value: number;
 
   @Prop()
   notes: string;

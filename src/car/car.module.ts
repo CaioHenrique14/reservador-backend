@@ -13,7 +13,7 @@ import { CarController } from './car.controller';
       }
     ])
   ],
-  exports: [],
+  exports: [CarService],
   controllers: [CarController],
   providers: [CarService]
 })

@@ -1,11 +1,12 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
+import { CarService } from 'src/car/car.service';
 import { Lease } from './lease.model';
 
 @Injectable()
 export class LeaseService {
-    constructor(
+    constructor(private carService: CarService,
         @InjectModel(Lease.name) private leaseModel: Model<Lease>
     ) { }
 
@@ -14,9 +15,17 @@ export class LeaseService {
     }
 
     async create(lease: Lease): Promise<Lease> {
-        const leaseCreate = new this.leaseModel(lease);
 
+        const car = await this.carService.findById(lease.idCar);
+        if(car.available){
+        const leaseCreate = new this.leaseModel(lease);
         return leaseCreate.save();
+        }else{
+            throw new UnauthorizedException('Carro não está disponível para locação');
+        }
+ 
+
+        
     }
 
     async findById(id: string): Promise<Lease> {

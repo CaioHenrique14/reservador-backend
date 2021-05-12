@@ -35,7 +35,7 @@ export class Car extends Document {
     price: number;
 
     @Prop()
-    available: string;
+    available: boolean;
     
 }
 

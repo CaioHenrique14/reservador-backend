@@ -14,10 +14,12 @@ export class CarService {
         return this.carModel.find().exec();
     }
 
-    async findByFilter(filter:FilterSelector): Promise<Car[]> {
-        let body = filter.body;
-        let idUnit = filter.origin;
-        return this.carModel.find({body},{idUnit});
+    async findByFilter(filter: FilterSelector): Promise<Car[]> {
+        let body, idUnit;
+        filter = filter || {};
+        body = filter.body;
+        idUnit = filter.origin;
+        return this.carModel.find({ body }).find({ idUnit }).exec();
     }
 
     async create(car: Car): Promise<Car> {

@@ -14,7 +14,7 @@ export class AuthService {
       const user = await this.userService.findByEmail(credentials.email);
       const valid = await bcrypt.compare(credentials.password, user.password);
       if (!valid) {
-        throw new UnauthorizedException('Invalid credentials');
+        throw new UnauthorizedException('Acesso negado');
       }
       const token = this.jwtService.sign({ email: user.email });
       user.token = token;
