@@ -1,5 +1,5 @@
 
-import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put, Query } from '@nestjs/common';
 import { Lease } from './lease.model';
 import { LeaseService } from './lease.service';
 
@@ -17,6 +17,10 @@ export class LeaseController {
   @Post()
   async create(@Body() lease: Lease): Promise<Lease> {
     return this.leaseService.create(lease);
+  }
+  @Get('user')
+  async getLeaseByUser(@Query() id:any): Promise<Lease[]> {
+    return this.leaseService.getLeaseByUser(id);
   }
 
   @Get(':id')

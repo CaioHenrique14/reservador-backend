@@ -28,6 +28,11 @@ export class LeaseService {
         
     }
 
+    async getLeaseByUser(id: any): Promise<Lease[]> {
+        let idUser = id.id;
+        return this.leaseModel.find({ idUser }).exec();
+    }
+
     async findById(id: string): Promise<Lease> {
         return this.leaseModel.findById(id).exec();
     }
